@@ -29,6 +29,13 @@ h6 {
   @include heading-font;
 }
 
+.scale--js {
+  display: inline-block;
+  transform-origin: 50% 0;
+  -webkit-font-smoothing: antialiased;
+  transform: translate3d( 0, 0, 0);
+}
+
 .page-section {
   padding: 100px 0;
   h2.section-heading {
