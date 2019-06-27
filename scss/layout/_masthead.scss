@@ -36,12 +36,14 @@ header.masthead {
         background: rgba($primary, 0.6);
         padding:15px;
         box-sizing: border-box;
-        width:60%;
+        width:75%;
       }
       .intro-lead-in {
         text-align: left;
         font-size: 35px;
         font-style: italic;
+        line-height: 35px;
+        text-overflow: ellipsis;
         @include serif-font;
       }
       .intro-heading {
