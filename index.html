@@ -11,6 +11,7 @@
   <title>Studio CL Arquitetura</title>
 
   <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
@@ -47,7 +48,7 @@
             <a class="nav-link js-scroll-trigger" href="#planos">Planos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#tabelaDeValores">Tabela de Valores</a>
+            <a class="nav-link js-scroll-trigger" href="#orcamento">Faça seu Orçamento</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#team">Equipe</a>
@@ -234,7 +235,7 @@
               <li>Lista de compras</li>
               <li>Atendimento individual via skype ou e-mail</li>
             </ul>
-            <a class="nav-link js-scroll-trigger" href="#contact"><button type="button" class="btn btn-lg btn-block btn-primary">Entre em contato</button></a>
+            <a class="nav-link js-scroll-trigger" href="#contact"><button type="button" class="btn btn-lg btn-block btn-primary" onclick="preencherMensagem('Olá!\n\nGostaria de saber mais sobre o serviço de consultoria.\n\nDetalhes: \n');">Entre em contato</button></a>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -253,7 +254,7 @@
               <li>Um pedido de revisão</li>
               <li>Atendimento individual via Skype, e-mail ou Whatsapp</li>
             </ul>
-            <a class="nav-link js-scroll-trigger" href="#tabelaDeValores"><button type="button" class="btn btn-lg btn-block btn-primary">Saiba Mais</button></a>
+            <a class="nav-link js-scroll-trigger" href="#orcamento"><button type="button" class="btn btn-lg btn-block btn-primary">Saiba Mais</button></a>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -267,7 +268,7 @@
               <li>Com a compra de um pacote de todos os ambientes temos descontos</li>
               <li>Para quem deseja um projeto diferenciado, não só residencial</li>
             </ul>
-            <a class="nav-link js-scroll-trigger" href="#contact"><button type="button" class="btn btn-lg btn-block btn-primary">Obtenha um orçamento</button></a>
+            <a class="nav-link js-scroll-trigger" href="#contact"><button type="button" class="btn btn-lg btn-block btn-primary"  onclick="preencherMensagem('Olá!\n\nMe interessei pelo Projeto Premium.\n\nDetalhes: \n');">Obtenha um orçamento</button></a>
           </div>
         </div>
       </div>
@@ -275,49 +276,45 @@
 </section>
 
   <!-- Tabela de Valores-->
-  <section class="page-section" id="tabelaDeValores">
+  <section class="page-section" id="orcamento">
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Valores Por ambiente</h2>
-              <h3 class="section-subheading text-muted">Veja os valores por ambiente para nossos projetos personalizados.</h3>
+            <div class="col-sm-10 col-lg-6 mx-auto text-center">
+              <h2 class="section-heading text-uppercase">Ambientes</h2>
+              <h3 class="section-subheading">Escolha os ambientes do seu projeto, e entre em contato para fazer seu orçamento!</h3>
             </div>
-          </div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Ambiente</th>
-            <th scope="col">Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Quarto, Sala de Estar ou Sala de Jantar</th>
-            <td>R$ 500,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Closet ou Escritório</th>
-            <td>R$ 450,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Banheiro ou Lavanderia</th>
-            <td colspan="2">R$ 250,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Lavabo ou Dispensa</th>
-            <td colspan="2">R$ 150,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Cozinha</th>
-            <td colspan="2">R$ 650,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Área, Gourmet ou Social</th>
-            <td colspan="2">R$ 600,00</td>
-          </tr>
-        </tbody>
-      </table>
-      <a class="nav-link js-scroll-trigger" href="#contact"><button type="button" class="btn btn-lg btn-block btn-primary">Entre em contato</button></a>
+        </div>
+
+        <table
+          id="tabelaDeValores"
+          data-toggle="table"
+          data-toolbar="#toolbar"
+          data-height="500"
+          data-click-to-select="true"
+          data-url="json/valores.json">
+          <thead>
+            <tr>
+              <th data-field="state" data-checkbox="true"></th>
+              <th data-field="Ambiente">Ambiente</th>
+            </tr>
+          </thead>
+        </table>
+
+        <a class="nav-link js-scroll-trigger" href="#contact"><button id="calcular" type="button" class="btn btn-lg btn-block btn-primary" onclick="preencherMensagem(determinarSelecao());">Entre em contato</button></a>
+
+        <script>
+          var $table = $('#table')
+          var $button = $('#calcular')
+        
+          $(function() {
+            $button.click(function () {
+              alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+            })
+          })
+        </script>
+
+
     </div>
   </section>
 
@@ -742,6 +739,10 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/agency.min.js"></script>
+  <script src="js/fetchTabelas.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+  <script src="js/handleContact.js"></script>
+
 
 </body>
 
