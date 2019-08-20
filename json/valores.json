@@ -1,0 +1,26 @@
+[
+ {
+   "Ambiente": "Quarto, Sala de Estar ou Sala de Jantar",
+   "Valor": "500"
+ },
+ {
+   "Ambiente": "Closet ou Escritório",
+   "Valor": "450"
+ },
+ {
+   "Ambiente": "Banheiro ou Lavanderia",
+   "Valor": "250"
+ },
+ {
+   "Ambiente": "Lavabo ou Dispensa",
+   "Valor": "150"
+ },
+ {
+   "Ambiente": "Cozinha",
+   "Valor": "650"
+ },
+ {
+   "Ambiente": "Área, Gourmet ou Social",
+   "Valor": "600"
+ }
+]
